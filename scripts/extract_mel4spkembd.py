@@ -41,7 +41,7 @@ def pySTFT(x, fft_length=1024, hop_length=256):
     return np.abs(result)    
     
 def extract_mel(in_dir="", out_dir="", ext=".wav"):
-    mel_basis = mel(16000, 1024, fmin=90, fmax=7600, n_mels=80).T
+    mel_basis = mel(sr=16000, n_fft=1024, fmin=90, fmax=7600, n_mels=80).T
     min_level = np.exp(-100 / 20 * np.log(10))
     b, a = butter_highpass(30, 16000, order=5)
 
