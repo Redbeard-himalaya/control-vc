@@ -15,8 +15,9 @@ python3 scripts/preprocess.py \
     --srcdir $WAV_DIR_IN \
     --outdir $WAV_DIR_PROCESSED \
     --postfix $EXT \
-    --pad --keepfolder \
-    --rhythm_cruve
+    --keepfolder
+#    --pad --keepfolder
+#    --rhythm_cruve
 
 # stage 2: get quantized hubert code
 echo "=========== Extracting and parsing HuBERT code... ==========="
@@ -65,4 +66,5 @@ python infer_main.py \
      --checkpoint_file ${CKPT_DIR}/embed_f0stat2 \
      --output_dir $OUT_DIR \
      --f0_stats ${MANI_DIR}/f0_stats.pkl \
+     --f0_curve_mode constant \
      --spk_embed ${MANI_DIR}/spk_embed.pkl 
